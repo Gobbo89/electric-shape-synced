@@ -1,5 +1,5 @@
 # electric-shape-synced
-This is an example to debug the [promise workflow](https://electric-sql.com/docs/usage/data-access/shapes#promise-workflow) of [ElectricSQL](https://electric-sql.com/) shapes, in particular `shape.synced`.
+This is an example to debug the [promise workflow](https://electric-sql.com/docs/usage/data-access/shapes#promise-workflow) of [ElectricSQL](https://github.com/electric-sql/electric/) shapes, in particular `shape.synced`.
 
 ## Documented behavior
 
@@ -52,7 +52,7 @@ npm install
 # Adjust the .env file to your likings
 ```
 ### Node.js
-Basic example [code for node](./src/nodejs.ts)
+Using some basic sample [code for Node](./src/nodejs.ts). Steps to reproduce:
 ```sh
 #### If needed, wipe everything first
 npm run backend:down
@@ -62,6 +62,7 @@ npm run db:migrate
 npm run client:generate
 ####
 
+# Run the node example for the first time
 npx tsx ./src/nodejs.ts
 # A new DB file will be created.
 # Now exit Node with Ctrl+C
@@ -76,7 +77,7 @@ npx tsx ./src/nodejs.ts
 <img alt="Node.js logs" src="./src/assets/nodejs-log.png" />
 
 ### React.js
-Here I simply used the React template provided by `create-electric-app`, w/ some additions in [Example.tsx](./src/Example.tsx)
+For React I used the template provided by `create-electric-app`, w/ some additions in [Example.tsx](./src/Example.tsx). Steps to reproduce:
 ```sh
 #### If needed, wipe everything first
 npm run backend:down
@@ -92,19 +93,22 @@ npm run build
 npm run preview
 
 # ❗IMPORTANT❗
-#  Open the Vite preview URL (it will create the browser DB)
+#  Open the Vite preview URL in your browser,
+#  this will initialize the browser DB.
 
 # ❗IMPORTANT❗
 #  Now, do NOT close the Vite preview browser tab!
-#  Instead, just navigate to "about:blank".
+#  Instead, just navigate to "about:blank" in the same tab.
 #  That's because we do not want the session
 #  storage for electric_sub & tab:id to change.
 
 npm run db:psql
 > insert into items values ('some-totally-random-item');
 
-# Now, using the same browser tab, open the Dev console.
-# Navigate from "about:blank" to the Vite preview again.
-# Check the Dev console logs:
+# Now, in the SAME browser tab, open the Dev console.
+# ❗IMPORTANT❗
+# Do NOT use the back button.
+# In the SAME browser tab navigate from "about:blank"
+# to the Vite preview URL. Check the Dev console logs:
 ```
 <img alt="Node.js logs" src="./src/assets/browser-log.png" />
